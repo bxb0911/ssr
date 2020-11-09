@@ -1,0 +1,32 @@
+{
+  "method": "POST",
+  "data": {
+    "isExist": 1,
+    "isOnline": 1,
+    "needVerify": 1,
+    "bookType": 1,
+    "bookId": "1001",
+    "name": "2020年教材课本六年级数学上册人教版",
+    "subject": "数学",
+    "grade": "六年级",
+    "term": "上册",
+    "version": "人教版",
+    "cover": "https://kd01-1253445850.image.myqcloud.com/scanimg/scan_81794658d2ef54cd59881bd5b334f4f9.jpg?imageView2/2/w/170",
+    "coverContent": "2020年教材课本六年级数学上册人教版",
+    "doCount": 96506532,
+    "upUname": "六年级数学",
+    "hasAnswer": 1,
+    "answerCount": 100,
+    "answers": [
+      "https://kd01-1253445850.file.myqcloud.com/scanimg/scan_1e3e6a4ce6c0b9013ed8d47ca970edbe.jpg",
+      "https://kd01-1253445850.file.myqcloud.com/scanimg/scan_3fb3ba98b1922bc2d0a0da3442a4654f.jpg",
+      "https://kd01-1253445850.file.myqcloud.com/scanimg/scan_b98c8438eff7be7e3dc6329ffe408734.jpg"
+    ],
+    "oriAnswers": [
+      "https://kd01-1253445850.file.myqcloud.com/scanimg/scan_1e3e6a4ce6c0b9013ed8d47ca970edbe.jpg",
+      "https://kd01-1253445850.file.myqcloud.com/scanimg/scan_3fb3ba98b1922bc2d0a0da3442a4654f.jpg",
+      "https://kd01-1253445850.file.myqcloud.com/scanimg/scan_b98c8438eff7be7e3dc6329ffe408734.jpg"
+    ],
+    "isCollected": 0
+  }
+}

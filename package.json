@@ -1,0 +1,80 @@
+{
+  "name": "kd-home",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build && VUE_ENV=server vue-cli-service build --no-clean",
+    "lint": "vue-cli-service lint",
+    "start": "yarn --cwd ./server start"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,vue,less}": "npm run lint --fix"
+  },
+  "dependencies": {
+    "axios": "^0.21.0",
+    "core-js": "^3.6.5",
+    "cuid": "^2.1.8",
+    "express": "^4.17.1",
+    "koa": "^2.13.0",
+    "koa-compress": "^5.0.1",
+    "koa-static": "^5.0.0",
+    "lru-cache": "^6.0.0",
+    "qs": "^6.9.4",
+    "vue": "^2.6.12",
+    "vue-meta": "^2.4.0",
+    "vue-router": "^3.2.0",
+    "vue-server-renderer": "^2.6.12",
+    "vuex": "^3.4.0",
+    "vuex-router-sync": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.11.6",
+    "@types/koa-compress": "^4.0.1",
+    "@types/koa-static": "^4.0.1",
+    "@types/lru-cache": "^5.1.0",
+    "@types/node": "^14.14.6",
+    "@types/webpack-dev-middleware": "^3.7.2",
+    "@types/webpack-hot-middleware": "^2.25.3",
+    "@typescript-eslint/eslint-plugin": "^3.1.0",
+    "@typescript-eslint/parser": "^2.34.0",
+    "@upc/eslint-config-base": "^0.4.0",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-typescript": "~4.5.0",
+    "@vue/cli-plugin-vuex": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-standard": "^5.1.2",
+    "@vue/eslint-config-typescript": "^5.0.2",
+    "babel-eslint": "^10.1.0",
+    "chalk": "^4.1.0",
+    "chokidar": "^3.4.3",
+    "cssnano-preset-advanced": "^4.0.7",
+    "eslint": "^6.8.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "husky": "^4.3.0",
+    "less": "^3.0.4",
+    "less-loader": "^5.0.0",
+    "lint-staged": "^10.5.1",
+    "mocker-api": "^2.7.1",
+    "postcss-px2rem": "^0.3.0",
+    "prettier": "^1.19.1",
+    "typescript": "~3.9.3",
+    "vue-eslint-parser": "^7.1.1",
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^5.4.0",
+    "webpack-dev-middleware": "^4.0.0",
+    "webpack-hot-middleware": "^2.25.0",
+    "webpack-node-externals": "^2.5.2"
+  }
+}

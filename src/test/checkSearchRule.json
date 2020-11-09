@@ -1,0 +1,6 @@
+{
+  "method": "POST",
+  "data": {
+    "isSupport": false
+  }
+}

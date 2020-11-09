@@ -1,0 +1,45 @@
+{
+  "method": "POST",
+  "data": {
+    "hasMore": true,
+    "bookTotal": 100,
+    "bookList": [
+      {
+        "bookId": "1001",
+        "title": "2019年教材课本三年级语文上册人教版",
+        "subject": "语文",
+        "grade": "三年级",
+        "term": "上册",
+        "version": "人教版",
+        "coverPage": "http://kd01-1253445850.image.myqcloud.com/scanimg/scan_eb9a9fa14c6bd5dc67dfaf4f3f90dbbc.jpg?imageView2/2/w/170",
+        "isCollected": 0,
+        "bookType": 1,
+        "subjectId": 1
+      },
+      {
+        "bookId": "1002",
+        "title": "2020年教材课本六年级数学上册人教版",
+        "subject": "数学",
+        "grade": "六年级",
+        "term": "上册",
+        "version": "人教版",
+        "coverPage": "http://kd01-1253445850.image.myqcloud.com/scanimg/scan_81794658d2ef54cd59881bd5b334f4f9.jpg?imageView2/2/w/170",
+        "isCollected": 1,
+        "bookType": 1,
+        "subjectId": 1
+      },
+      {
+        "bookId": "1003",
+        "title": "2020年教材课本七年级数学上册人教版",
+        "subject": "数学",
+        "grade": "七年级",
+        "term": "上册",
+        "version": "人教版",
+        "coverPage": "http://kd01-1253445850.image.myqcloud.com/scanimg/scan_02a9a258b83387679b33d09b372d14bb.jpg?imageView2/2/w/170",
+        "isCollected": 0,
+        "bookType": 1,
+        "subjectId": 1
+      }
+    ]
+  }
+}

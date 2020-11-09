@@ -1,0 +1,6 @@
+{
+  "checkSearchRule": "/search/web/checkSearchRule",
+  "bookDetail": "/search/web/booksearch",
+  "bookSearch": "/search/web/search",
+  "isbnSearch": "/search/web/codesearchlist"
+}
