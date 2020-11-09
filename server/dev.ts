@@ -5,10 +5,11 @@ import chokidar from 'chokidar';
 import devMiddleware from 'webpack-dev-middleware';
 import hotMiddleware from 'webpack-hot-middleware';
 // @ts-ignore next-line
-import webpackConfig from '../node_modules/@vue/cli-service/webpack.config';
+import clientConfig from '../node_modules/@vue/cli-service/webpack.config';
+// @ts-ignore next-line
+import serverConfig from '../node_modules/@vue/cli-service/webpack.config';
 import { BundleRenderer } from 'vue-server-renderer';
 const resolve = (file: string) => path.resolve(__dirname, file);
-const compiler = webpack(webpackConfig);
 
 // eslint-disable-next-line
 export function devServer(server: { use: (arg0: any) => void }, callback: (arg0: any, arg1: any, arg2: any) => void) {
@@ -34,10 +35,12 @@ export function devServer(server: { use: (arg0: any) => void }, callback: (arg0:
   });
 
   // 监听 serverBundle -> 调用 update -> 更新 Renderer
-  const serverDevMiddleware = devMiddleware(compiler, {
+  // eslint-disable-next-line
+  const serverCompiler = webpack(serverConfig as any);
+  const serverDevMiddleware = devMiddleware(serverCompiler, {
     logLevel: 'silent'
   });
-  compiler.hooks.done.tap('server', () => {
+  serverCompiler.hooks.done.tap('server', () => {
     serverBundle = JSON.parse(
       serverDevMiddleware.fileSystem.readFileSync(resolve('../dist/vue-ssr-server-bundle.json'), 'utf-8')
     );
@@ -45,14 +48,16 @@ export function devServer(server: { use: (arg0: any) => void }, callback: (arg0:
   });
 
   // 监听 clientManifest -> 调用 update -> 更新 Renderer
-  webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
-  webpackConfig.entry.app = ['webpack-hot-middleware/client?quiet=true&reload=true', webpackConfig.entry.app];
-  webpackConfig.output.filename = '[name].js';
-  const clientDevMiddleware = devMiddleware(compiler, {
-    publicPath: webpackConfig.output.publicPath,
+  // eslint-disable-next-line
+  const clientCompiler = webpack(clientConfig as any);
+  clientConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
+  clientConfig.entry.app = ['webpack-hot-middleware/client?quiet=true&reload=true', clientConfig.entry.app] as any;
+  clientConfig.output.filename = '[name].js';
+  const clientDevMiddleware = devMiddleware(clientCompiler, {
+    publicPath: clientConfig.output.publicPath,
     logLevel: 'silent'
   });
-  compiler.hooks.done.tap('client', () => {
+  clientCompiler.hooks.done.tap('client', () => {
     clientManifest = JSON.parse(
       clientDevMiddleware.fileSystem.readFileSync(resolve('../dist/vue-ssr-client-manifest.json'), 'utf-8')
     );
@@ -60,7 +65,7 @@ export function devServer(server: { use: (arg0: any) => void }, callback: (arg0:
   });
 
   server.use(
-    hotMiddleware(compiler, {
+    hotMiddleware(clientCompiler, {
       log: false
     })
   );
