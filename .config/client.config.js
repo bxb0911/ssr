@@ -1,3 +1,5 @@
+const PWD = process.cwd();
+
 module.exports = {
   mode: 'development',
   context: '/Users/mm/myWorks/playground/ssr/ssr',

@@ -5,9 +5,9 @@ import chokidar from 'chokidar';
 import devMiddleware from 'webpack-dev-middleware';
 import hotMiddleware from 'webpack-hot-middleware';
 // @ts-ignore next-line
-import clientConfig from '../node_modules/@vue/cli-service/webpack.config';
+import clientConfig from '../.config/client.config.js';
 // @ts-ignore next-line
-import serverConfig from '../node_modules/@vue/cli-service/webpack.config';
+import serverConfig from '../.config/server.config.js';
 import { BundleRenderer } from 'vue-server-renderer';
 const resolve = (file: string) => path.resolve(__dirname, file);
 

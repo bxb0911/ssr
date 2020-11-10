@@ -6,12 +6,15 @@ Vue.use(VueRouter);
 export function createRouter(): VueRouter {
   return new VueRouter({
     mode: 'history',
+    fallback: false,
+    scrollBehavior: () => ({ x: 0, y: 0 }),
     routes: [
       {
-        path: '/',
+        path: '/pc',
         name: 'Home',
         component: () => import('../views/Home.vue')
       },
+      { path: '/', redirect: '/pc' },
       {
         path: '/about',
         name: 'About',

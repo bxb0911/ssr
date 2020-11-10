@@ -92,25 +92,38 @@
         <a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a>
       </li>
     </ul>
-    <div>{{ bookList }}</div>
+    <div>{{ list.bookList }}</div>
   </div>
 </template>
 
-<script lang="ts">
+<script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'HelloWorld',
+  metaInfo: {
+    title: '快快快对作业'
+  },
   props: {
     msg: {
       type: String,
       default: ''
     }
   },
-  asyncData({ store }: { [k: string]: any }) {
-    return store.dispatch('FETCH_CODESEARCH_DATA', {});
+  serverPrefetch() {
+    return this.fetchList();
   },
   computed: {
-    bookList(): unknown {
-      return (this as any).$store.state.list;
+    ...mapState(['list'])
+  },
+  mounted() {
+    if (this.list) {
+      this.fetchList();
+    }
+  },
+  methods: {
+    fetchList() {
+      return this.$store.dispatch('FETCH_TEXTSEARCH_DATA', {});
     }
   }
 };

@@ -6,7 +6,6 @@ export default {
     { commit }: { [x: string]: any },
     params: { [index: string]: string | number | Blob } | undefined
   ): Promise<void> {
-    debugger;
     const res = await getCodeSearchList(params);
     commit('SET_BOOKLIST_DATA', res?.data || {});
   },

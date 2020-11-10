@@ -2,7 +2,7 @@ import axios from 'axios';
 import qs from 'qs';
 import { openCry } from '@/utils/openCry';
 import Generate from '@/utils/generate';
-import { getCuid } from '@/utils/utils';
+// import { getCuid } from '@/utils/utils';
 const isProd = process.env.NODE_ENV === 'production';
 
 interface RequestOptions {
@@ -62,10 +62,11 @@ async function request(
   params: { [index: string]: string | number | Blob | null },
   options?: { [index: string]: string | number | boolean | { [key: string]: unknown } }
 ) {
-  const base: RequestOptions = { method: type, url: !isProd ? '/api' + url : url };
+  // const base: RequestOptions = { method: type, url: !isProd ? '/api' + url : url };
+  const base: RequestOptions = { method: type, url: 'http://yapi.zuoyebang.cc/mock/3055' + url };
   // 添加 params 参数
   params.aes = +isProd;
-  params.cuid = getCuid();
+  // params.cuid = getCuid();
   params = {
     ...params,
     ...new Generate(params)

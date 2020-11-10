@@ -60,7 +60,7 @@ module.exports = {
         optimization: {
           splitChunks: {
             cacheGroups: {
-              commons: {
+              vendors: {
                 test: module => /node_modules/.test(module.context) && !/\.css$/.test(module.request),
                 name: 'vendors',
                 chunks: 'all'
