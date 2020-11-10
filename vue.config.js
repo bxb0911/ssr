@@ -4,7 +4,7 @@ const apiMocker = require('mocker-api');
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin');
 const nodeExternals = require('webpack-node-externals');
-const isServer = true;
+const isServer = process.env.VUE_ENV === 'server';
 const isProd = process.env.NODE_ENV === 'production';
 const proxyEnv = process.env.VUE_APP_PROXY_ENV;
 const resolve = file => path.resolve(__dirname, file);
@@ -55,6 +55,23 @@ module.exports = {
 
     if (isServer) {
       config.optimization.delete('splitChunks');
+    } else {
+      config.merge({
+        optimization: {
+          splitChunks: {
+            cacheGroups: {
+              commons: {
+                test: module => /node_modules/.test(module.context) && !/\.css$/.test(module.request),
+                name: 'vendors',
+                chunks: 'all'
+              }
+            }
+          },
+          runtimeChunk: {
+            name: 'manifest'
+          }
+        }
+      });
     }
   },
   configureWebpack() {

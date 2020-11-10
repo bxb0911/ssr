@@ -8,7 +8,7 @@ import { BundleRenderer, createBundleRenderer } from 'vue-server-renderer';
 const template = fs.readFileSync('../public/index.template.html', 'utf-8');
 import serverBundle from '../dist/vue-ssr-server-bundle.json';
 import clientManifest from '../dist/vue-ssr-client-manifest.json';
-import { devServer } from './dev';
+// import { devServer } from './dev';
 const resolve = (file: string) => path.resolve(__dirname, file);
 const isProd = process.env.NODE_ENV === 'production';
 const app = new Koa();
@@ -26,14 +26,15 @@ const getRenderer = (template: string, serverBundle: string | object, clientMani
   });
 };
 
-let renderer: BundleRenderer, onReady: Promise<unknown>;
+let renderer: BundleRenderer;
+// let onReady: Promise<unknown>;
 
 if (isProd) {
   renderer = getRenderer(template, serverBundle, clientManifest);
 } else {
-  onReady = devServer(app, (template, serverBundle, clientManifest) => {
-    renderer = getRenderer(template, serverBundle, clientManifest);
-  });
+  // onReady = devServer(app, (template, serverBundle, clientManifest) => {
+  renderer = getRenderer(template, serverBundle, clientManifest);
+  // });
 }
 
 const render = async (ctx: Context) => {
@@ -56,12 +57,12 @@ app.use(compress({ threshold: 0 }));
 app.use(serve(resolve('../dist/'), { index: false }));
 
 app.use(
-  isProd
-    ? render
-    : async ctx => {
-        await onReady;
-        render(ctx);
-      }
+  // isProd ?
+  render
+  // : async ctx => {
+  //     await onReady;
+  //     render(ctx);
+  //   }
 );
 
 app.listen(7000, () => {
